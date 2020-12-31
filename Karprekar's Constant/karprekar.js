@@ -20,21 +20,28 @@ function check(){
     document.getElementById('ptag').innerHTML = '';
     var valu = document.querySelector('#box').value
     var val = document.querySelector('#box').value
+    console.log(valu.length)
     var count = 0;
-    function karprekar(val1,val2){
-        var data1 = val1.toString().split('').sort((a,b)=>(b-a)).join('')
-        var data2 = val2.toString().split('').sort((a,b)=>(a-b)).join('')
-        var result = data1-data2
-        document.getElementById('ptag').innerHTML += `${data1} - ${data2} = ${result}<br>`
-        count++;
-        if(result != 6174)
-        {
-            val1= result
-            val2 = result
-            //console.log(val1,val2)
-            karprekar(val1,val2);
+    if(valu.length == 4)
+    {
+        function karprekar(val1,val2){
+            var data1 = val1.toString().split('').sort((a,b)=>(b-a)).join('')
+            var data2 = val2.toString().split('').sort((a,b)=>(a-b)).join('')
+            var result = data1-data2
+            document.getElementById('ptag').innerHTML += `${data1} - ${data2} = ${result}<br>`
+            count++;
+            if(result != 6174)
+            {
+                val1= result
+                val2 = result
+                //console.log(val1,val2)
+                karprekar(val1,val2);
+            }
         }
+        karprekar(valu,val)
+        document.getElementById('ptag').innerHTML += `<br>The Karprekar constant is derived in ${count} iteration`
     }
-    karprekar(valu,val)
-    document.getElementById('ptag').innerHTML += `<br>The Karprekar constant is derived in ${count} iteration`
+    else{
+        alert('Enter 4 digit number')
+    }
 }
